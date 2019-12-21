@@ -10,6 +10,7 @@
 #include <vector>
 
 /*
+ Problem 1 cell state
     this is the problem for finding out the state of each cell
  after a given number of days.
  the number of the cell is 8
@@ -72,6 +73,30 @@ std::vector<int> cellCompete(int* states, int days){
     
     return resultVector;
 }
+/*
+    problem 2 : greatest common divisor
+    find out the greates common devisor from
+    a list of positive numbers given
+ 
+ */
+int findGCD(int num_1, int num_2){
+    if(num_1 == 0){
+        return num_2;
+    }
+    return findGCD((num_2 % num_1), num_1);
+}
+int generalizedGCD(int num, int* arr){
+    int result = arr[0];
+    for(int i = 1; i < num; i++){
+        result = findGCD(arr[i], result);
+        if(result == 1){
+            return 1;
+        }
+    }
+    
+    return result;
+}
+
 int main(int argc, const char * argv[]) {
     std::cout << "compute the state of the cells"<<std::endl;
     return 0;
